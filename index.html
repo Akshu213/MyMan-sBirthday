@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday My Man 🎉</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body onload="showAlert()">
+  <div class="container">
+    <h1>🎉 Happy Birthday My Man 🥳</h1>
+    <p class="sub">You are my peace, my smile, my strength 🫶🏻</p>
+    <div class="buttons">
+      <a href="ourstory.html">Our Story 💕</a>
+      <a href="memories.html">Memories 📸</a>
+      <a href="lovenotes.html">Love Notes 💌</a>
+      <a href="surprise.html">Spin a Surprise 🎲</a>
+      <a href="music.html">Music Lounge 🎶</a>
+      <a href="countdown.html">Countdown to Us ⏳</a>
+    </div>
+    <div class="confetti">🎊🎊🎊</div>
+  </div>
+ <div id="countdown" style="font-size: 1.5rem; color: #5c2d91; text-align: center; margin-top: 1rem;"></div>
+
+<script>
+  const countdownTarget = new Date("2025-07-16T00:00:00+05:30").getTime();
+
+  const countdownFunc = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = countdownTarget - now;
+
+    if (distance < 0) {
+      clearInterval(countdownFunc);
+      document.getElementById("countdown").innerHTML = "🎉 It's time! Happy Birthday, my love! 💖";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+      `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left until your surprise 💝`;
+  }, 1000);
+</script>
+
+  </script>
+</body>
+</html>
