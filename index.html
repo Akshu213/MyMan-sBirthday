@@ -6,9 +6,30 @@
   <title>Happy Birthday My Man 🎉</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body onload="showAlert()">
+<body onclick="revealSecret()">
+    <div class="lock-screen" id="lock-screen">
+  <div id="countdown" style="font-size: 1.5rem; color: #5c2d91; text-align: center; margin-top: 1rem;">
+   <script>
+     document.getElementById("countdown").innerHTML =
+      `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left until your surprise 💝`;
+  }, 1000);
+   </script>
+ </div>
+    </div>
+
   <div class="container">
-    <h1>🎉 Happy Birthday My Man 🥳</h1>
+    
+ <div id="countdown" style="font-size: 1.5rem; color: #5c2d91; text-align: center; margin-top: 1rem;">
+   <script>
+     document.getElementById("countdown").innerHTML =
+      `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left until your surprise 💝`;}, 1000);
+   </script>
+ </div>
+
+<div id="hiddenDiv">
+   <div class="confetti">🎊🎊🎊</div>
+    
+  <h1>🎉 Happy Birthday My Man 🥳</h1>
     <p class="sub">You are my peace, my smile, my strength 🫶🏻</p>
     <div class="buttons">
       <a href="ourstory.html">Our Story 💕</a>
@@ -18,20 +39,25 @@
       <a href="music.html">Music Lounge 🎶</a>
       <a href="countdown.html">Countdown to Us ⏳</a>
     </div>
-    <div class="confetti">🎊🎊🎊</div>
-  </div>
- <div id="countdown" style="font-size: 1.5rem; color: #5c2d91; text-align: center; margin-top: 1rem;"></div>
+    </div>
 
-<script>
-  const countdownTarget = new Date("2025-07-16T00:00:00+05:30").getTime();
+   <script>
+  const countdownTarget = new Date("2025-07-15T00:00:00+05:30").getTime();
 
   const countdownFunc = setInterval(() => {
     const now = new Date().getTime();
     const distance = countdownTarget - now;
 
+    const countdownDiv = document.getElementById("countdown");
+
     if (distance < 0) {
       clearInterval(countdownFunc);
-      document.getElementById("countdown").innerHTML = "🎉 It's time! Happy Birthday, my love! 💖";
+      countdownDiv.innerHTML = `🎉 It's time! Happy Birthday, my love! 💖 (Click me)`;
+      countdownDiv.style.cursor = "pointer";
+      countdownDiv.onclick = function () {
+        document.getElementById("hiddenDiv").style.display = "block";
+        countdownDiv.style.display = "none";
+      };
       return;
     }
 
@@ -40,11 +66,11 @@
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById("countdown").innerHTML =
-      `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left until your surprise 💝`;
+    countdownDiv.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left until your surprise 💝`;
   }, 1000);
 </script>
 
-  </script>
+
+  </div>
 </body>
 </html>
